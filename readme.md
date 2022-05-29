@@ -35,6 +35,13 @@ The project's primary goal is to design and implement an application that would 
 
 ---
 
+# Repositories
+* [Main backend application](https://github.com/014551/unirankings-be)
+* [Unirankings parsers](https://github.com/014551/unirankings-parsers)
+* [Frontend](https://github.com/014551/unirankings-fe)
+
+---
+
 # Technology
 ## Backend programming language - Java
 The implementation of the BE application is done in the programming language Java version 17.  
