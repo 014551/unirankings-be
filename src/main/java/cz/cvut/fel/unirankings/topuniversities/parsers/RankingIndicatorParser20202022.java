@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+/** Parser for university rankings from 2020, 2021, 2022. */
 @Service
 @Qualifier("qsParser20202022")
 public class RankingIndicatorParser20202022 extends AbstractRankingIndicatorParser {

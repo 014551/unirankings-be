@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/** Class represents university's rank according to topuniversities.com. */
 @Entity(name = "qsRank")
 @Table(schema = "qs", name = "rank")
 public class Rank implements Serializable {
@@ -15,15 +16,19 @@ public class Rank implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  /** Order of university rank in the list. */
   @Column(name = "original_order_idx")
   private Integer originalOrderIdx;
 
+  /** Rank year. */
   @Column(name = "year")
   private String year;
 
+  /** Rank value. */
   @Column(name = "rank")
   private String rank;
 
+  /** University it belongs to. */
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "university_id", nullable = false)
   @OnDelete(action = OnDeleteAction.CASCADE)

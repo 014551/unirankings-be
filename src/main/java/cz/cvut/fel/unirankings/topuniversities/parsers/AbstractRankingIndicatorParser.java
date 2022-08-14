@@ -8,6 +8,7 @@ import org.jsoup.select.Elements;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/** Class that contains the core logic of the document parsing. */
 public abstract class AbstractRankingIndicatorParser implements RankingIndicatorParser {
 
   private static final String WRAP_IN_CSS_SELECTOR = ".td-wrap-in";

@@ -2,6 +2,7 @@ package cz.cvut.fel.unirankings.topuniversities.model.parser;
 
 import java.util.Objects;
 
+/** Class represents raw data collected during the extraction of university ranking. */
 public class UniversityRankingIndicator {
 
   private final Integer originalRowElementIdx;

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 
+/** Class contains logic of saving universities to the database. */
 @Service("qsDbWriter")
 public class DbWriter implements UniversityWriter {
 
@@ -19,6 +20,12 @@ public class DbWriter implements UniversityWriter {
     this.repository = repository;
   }
 
+  /**
+   * Saves the provided universities and its rankings and ranking indicators. In case university
+   * already exists in the database, then only ranks and ranking indicators are saved.
+   *
+   * @param universities universities to save
+   */
   @Override
   @Transactional
   public void write(List<University> universities) {

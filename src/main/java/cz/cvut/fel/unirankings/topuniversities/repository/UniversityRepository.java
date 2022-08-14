@@ -8,11 +8,21 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/** Repository for universities. */
 @Repository("qsUniversityRepository")
 public interface UniversityRepository extends JpaRepository<University, Long> {
 
   University findFirstByNameAndCountry(String name, String country);
 
+  /**
+   * Retrieves university with ranks and ranking indicators for the specified year, country and
+   * name. If any of the parameters is not specified, then it is omitted.
+   *
+   * @param year ranking year
+   * @param country university country
+   * @param name university name or part of the name
+   * @return universities with ranks and ranking indicators
+   */
   @Query(
       "SELECT u "
           + "FROM qsUniversity u "

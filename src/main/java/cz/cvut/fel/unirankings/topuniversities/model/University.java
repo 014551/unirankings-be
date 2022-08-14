@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/** Class represents university according to topuniversities.com. */
 @Entity(name = "qsUniversity")
 @Table(schema = "qs", name = "university")
 public class University implements Serializable {
@@ -15,22 +16,28 @@ public class University implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  /** University full name. */
   @Column(name = "name")
   private String name;
 
+  /** URL of the university detail page. */
   @Column(name = "detail_link_path")
   private String detailLinkPath;
 
+  /** City, where university is located. */
   @Column(name = "city")
   private String city;
 
+  /** Country, where university is located. */
   @Column(name = "country")
   private String country;
 
+  /** University ranks for different years. */
   @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
   @JsonManagedReference
   private final Set<Rank> ranks = new HashSet<>();
 
+  /** University ranking indicators for different years. */
   @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
   @JsonManagedReference
   private final Set<RankingIndicator> rankingIndicators = new HashSet<>();

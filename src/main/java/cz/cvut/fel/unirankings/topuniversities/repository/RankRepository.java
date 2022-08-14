@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/** Repository for university ranks. */
 @Repository("qsRankRepository")
 public interface RankRepository extends JpaRepository<Rank, Long> {
 

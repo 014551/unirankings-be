@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
+/** Page object model for the page with the list of rankings. */
 public class RankingsListPage {
 
   static final String TOP_UNIVERSITIES_DOMAIN = "https://www.topuniversities.com";
@@ -20,15 +21,21 @@ public class RankingsListPage {
 
   /** Web driver timeout. */
   private static final int TIMEOUT_IN_SECONDS = 10;
+
   /** Web driver polling interval. */
   private static final int POLLING_INTERVAL_IN_SECONDS = 3;
+
   /** Years that have to be treated differently in the URL path. */
   private static final List<String> INCORRECT_URL_PATH_YEARS =
       Arrays.asList("2014", "2015", "2016", "2017");
 
+  /** Instance of Selenium web driver. */
   private final WebDriver driver;
+
+  /** Explicit waits for selenium operations. */
   private final Wait<WebDriver> wait;
 
+  /** Target page URL. */
   private final String url;
 
   public RankingsListPage(WebDriver driver, String year) {
@@ -48,10 +55,12 @@ public class RankingsListPage {
             .ignoring(NoSuchElementException.class);
   }
 
+  /** Navigates to the target page. */
   public void navigate() {
     driver.navigate().to(url);
   }
 
+  /** Removes sliding popup about cookies. */
   public void removeSlidingPopup() {
     WebElement slidingPopup;
     By id = By.id("sliding-popup");
@@ -66,6 +75,11 @@ public class RankingsListPage {
         "var element = arguments[0];" + "element.parentNode.removeChild(element);", slidingPopup);
   }
 
+  /**
+   * Expands number of results on the page to the specified amount.
+   *
+   * @param numOfResults number of results to show
+   */
   public void expandResults(int numOfResults) {
     WebElement sortDropdown = driver.findElement(By.className(SORT_BY_DROPDOWN_CLASS_NAME));
     sortDropdown.click();
@@ -88,6 +102,7 @@ public class RankingsListPage {
     dropDownVal.click();
   }
 
+  /** Switches to ranking indicators tab. */
   public void switchToRankingIndicatorsTab() {
     WebElement rankingIndicatorsTabButton;
     By xpath = By.xpath("//a[@href='#university-rankings-indicators']");
@@ -102,6 +117,7 @@ public class RankingsListPage {
     ex.executeScript(JS_CLICK_SCRIPT, rankingIndicatorsTabButton);
   }
 
+  /** Waits until ranking indicators' table is loaded. */
   public void waitUntilRankingIndicatorsTableIsLoaded() {
     By xpath =
         By.xpath(
@@ -114,14 +130,25 @@ public class RankingsListPage {
     }
   }
 
+  /**
+   * Gets pages source as a string.
+   *
+   * @return page source
+   */
   public String getPageSource() {
     return driver.getPageSource();
   }
 
+  /**
+   * Checks if the next page is present.
+   *
+   * @return true if present
+   */
   public boolean isNextPagePresent() {
     return driver.findElements(By.xpath("//a[@class='page-link next']")).size() > 0;
   }
 
+  /** Clicks to load the next page with results. */
   public void goToNextPage() {
     if (isNextPagePresent()) {
       WebElement nextPageButton = driver.findElement(By.xpath("//a[@class='page-link next']"));
@@ -130,6 +157,7 @@ public class RankingsListPage {
     }
   }
 
+  /** Quits the driver. */
   public void quit() {
     driver.quit();
   }

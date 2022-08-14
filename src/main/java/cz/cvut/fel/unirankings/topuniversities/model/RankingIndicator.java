@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/** Class represents university's ranking indicator according to topuniversities.com. */
 @Entity(name = "qsRankingIndicator")
 @Table(schema = "qs", name = "ranking_indicator")
 public class RankingIndicator implements Serializable {
@@ -15,30 +16,39 @@ public class RankingIndicator implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  /** Order of university ranking indicator in the list. */
   @Column(name = "original_order_idx")
   private Integer originalOrderIdx;
 
+  /** Ranking indicator year. */
   @Column(name = "year")
   private String year;
 
+  /** Overall score. */
   @Column(name = "overall_score")
   private String overallScore;
 
+  /** International student ratio. */
   @Column(name = "international_students_ratio")
   private String internationalStudentsRatio;
 
+  /** International faculty ratio. */
   @Column(name = "international_faculty_ratio")
   private String internationalFacultyRatio;
 
+  /** faculty student ratio. */
   @Column(name = "faculty_student_ratio")
   private String facultyStudentRatio;
 
+  /** Citation per faculty. */
   @Column(name = "citation_per_faculty")
   private String citationPerFaculty;
 
+  /** Academic reputation. */
   @Column(name = "academic_reputation")
   private String academicReputation;
 
+  /** Employer reputation. */
   @Column(name = "employer_reputation")
   private String employerReputation;
 

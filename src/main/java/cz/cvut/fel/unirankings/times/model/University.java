@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/** Class represents university according to timeshighereducation.com. */
 @Entity(name = "theUniversity")
 @Table(name = "university", schema = "the")
 public class University implements Serializable {
