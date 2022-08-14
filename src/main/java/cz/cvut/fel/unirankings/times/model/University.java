@@ -8,16 +8,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 /** Class represents university according to timeshighereducation.com. */
-@Entity(name = "theUniversity")
+@Entity(name = "theUniversity") /**/
 @Table(name = "university", schema = "the")
 public class University implements Serializable {
 
+  /** University name. */
   @Column(name = "name")
   private String name;
 
+  /** URL of the university detail page. */
   @Column(name = "detail_link_path")
   private String detailLinkPath;
 
+  /** Country, where university is located. */
   @Column(name = "country")
   private String country;
 
@@ -25,16 +28,17 @@ public class University implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  /** University ranks for different years. */
   @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
   @JsonManagedReference
   private Set<Rank> ranks = new HashSet<>();
 
+  /** University ranking scores for different years. */
   @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
   @JsonManagedReference
   private Set<RankingScore> rankingScores = new HashSet<>();
 
-  public University() {
-  }
+  public University() {}
 
   public University(String name, String detailLinkPath, String country) {
     this.name = name;

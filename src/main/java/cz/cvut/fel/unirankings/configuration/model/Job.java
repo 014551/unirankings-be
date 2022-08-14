@@ -3,6 +3,7 @@ package cz.cvut.fel.unirankings.configuration.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/** Class represents a job for running extraction process. */
 @Entity
 @Table(name = "job")
 public class Job {
@@ -13,18 +14,23 @@ public class Job {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  /** Ranking identifier for the extraction. */
   @Column(name = "ranking_identifier")
   private RankingIdentifier rankingIdentifier;
 
+  /** Ranking year. */
   @Column(name = "ranking_year")
   private String rankingYear;
 
+  /** Timestamp when processing of the job is performed. */
   @Column(columnDefinition = "TIMESTAMP", name = "processing_date")
   private LocalDateTime processingDate;
 
+  /** Job processing indicator. */
   @Column(name = "processing_result")
   private JobResult result;
 
+  /** Job processing type.  */
   @Column(name = "processing_type")
   private JobProcessingType processingType;
 

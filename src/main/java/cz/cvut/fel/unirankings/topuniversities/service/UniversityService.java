@@ -20,7 +20,7 @@ public interface UniversityService {
   /**
    * Provides university based on its id.
    *
-   * @param id university id.
+   * @param id university id
    * @return university
    */
   University findUniversity(Long id);
